@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+{% load static %}
+{% block page_content %}
+
+<html>
+	<head>
+		<title>Resume</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="icon" href="https://img.icons8.com/color/48/000000/parse-from-clipboard.png" type="image/x-icon">
+		<link rel="stylesheet" href="{% static 'css/resume.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="https://img.icons8.com/nolan/96/resume.png"/></span>
+						<h1>Resume</h1>
+						<p>Here you can find a detailed version of my resume. You can view a concise PDF version<br />
+						<a href="{% static 'img/2024Resume.pdf' %}" target="_blank">Here</a></p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#first">Education</a></li>
+							<li><a href="#second">Work History</a></li>
+							<li><a href="#third">Skills</a></li>
+							<li><a href="#cta">Directory</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Introduction</h2>
+										</header>
+										<p id="intro-p">Software Engineer with 3+ years
+                                            professional experience in a backend role at an e-commerce startup and 4+
+                                            years creating business solutions as the only tech related
+                                            employee for an automotive parts distributor. Lead engineer on multiple
+                                            backend projects in a professional setting, as well as full stack
+                                            projects as a personal hobby. Currently looking for opportunities in a
+                                            challenging and fast paced environment, a place where I can learn from
+                                            others and continue to grow as an engineer.
+                                        </p>
+									</div>
+									<span class="image"><img src="{% static 'img/pic01.jpg' %}" alt=""
+                                    /></span>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Education</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<span class="icon solid major style1"><img src="https://img.icons8.com/doodle/96/000000/graduation-scroll.png"/></span>
+										<h3>B.S. in Computer Science</h3><br>
+										<p>Received degree from Bridgewater State University in August 2020.</p>
+									</li>
+									<li>
+										<span class="icon solid major style1"><img src="https://img.icons8.com/doodle/96/000000/graduation-scroll.png"/></span>
+										<h3>High School Diploma</h3><br>
+                                        <p><em>Moses Brown School</em><br>Graduated May 2011</p>
+
+									</li>
+									<li>
+										<span class="icon major style5"><img src="https://img.icons8.com/nolan/96/certification.png"/></span>
+										<h3>Intermediate JavaScript Nanodegree</h3>
+										<p><em>Completed</em><br>
+                                            <a href="https://confirm.udacity.com/RR2AGQJK" target="_blank">View Certificate</a>
+                                        </p>
+									</li>
+								</ul>
+								<ul class="features">
+									<li>
+                                        <h3><strong><-------------------------------------</strong></h3>
+                                        <p><strong>Moses Brown School, Providence RI</strong><br>
+                                            <em>2007 - 2011</em>
+                                        <br>
+                                            * High School Diploma
+                                            <br>
+                                            * 3 Sport Athlete
+                                            <br>
+                                            * YMCA of Greater Providence Youth Counselor
+                                            <br>
+                                            * Norton 19U American Legion Baseball Coach
+                                        </p>
+									</li>
+									<li>
+										<h3>Timeline</h3>
+                                        <p><strong>University of Tampa, Tampa FL</strong><br>
+                                            <em>2011 - 2015</em>
+                                        <br>
+                                            * Studied Physical Therapy & Human Performance
+                                            <br>
+                                            * Became an ACSM Certified Personal Trainer & ACE Sports Conditioning
+                                            Specialist
+                                            <br>
+                                            * Campus Fitness Center Trainer
+                                            <br>
+                                            * Member of the Astronomy & Physics Club
+                                        </p>
+									</li>
+									<li>
+                                        <h3><strong>-------------------------------------></strong></h3>
+										<p><strong>Bristol Community College, Attleboro MA</strong><br>
+                                            <em>2016 - 2017</em>
+                                            <br>
+                                            * Began my journey into Software Engineering
+                                            <br>
+                                            * Intro to C++
+                                            <br>
+                                            * Intro to HTML
+                                            <br>
+                                            * Object Oriented Java I
+                                            <br>
+                                            * Object Oriented Concepts
+                                        </p>
+									</li>
+									<li>
+                                        <p><strong>Bridgewater State University, Bridgewater MA</strong><br>
+                                            <em>2018 - 2020</em>
+                                        <br>
+                                            * B.S. in Computer Science
+                                            <br>
+                                            * Spring 2020 Dean's List
+                                            <br>
+                                            * 3.54 GPA in Final Two Semesters
+                                            <br>
+                                            * Completed Independent Research Project on Machine Learning
+                                        </p>
+									</li>
+									<li>
+										<p><strong>Udacity, Intermediate JavaScript</strong><br>
+                                            <em>12/2020 - 02/2021</em>
+                                        <br>
+                                            * Object Oriented JavaScript
+                                            <br>
+                                            * Functional Programming
+                                            <br>
+                                            * Asynchronous JavaScript
+                                            <br>
+                                            * 3 Total Projects
+                                        </p>
+									</li>
+                                    <li>
+                                        <p><strong>Deployed Web Portfolio</strong><br>
+                                            <em></em>
+                                        </p>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Second Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Work History</h2>
+								</header>
+								<ul class="statistics">
+									<li class="style7">
+										<span class="icon solid"><img src="https://img.icons8.com/dusk/64/000000/system-task.png"/></span>
+										<strong>Software Engineer</strong> Perch (Acquired by Razor Group).
+										<h5>2021 - Present</h5>
+                                        <h5>Spent 3 years at Perch and 6 months in a transition role at Razor Group after
+                                    acquisition (Current end-date of September 6th, 2024).</h5>
+									</li>
+								</ul>
+								<p class="content">
+                                    • <strong>Perch Role:</strong>
+                                    • Lead engineer on multiple projects including Automated Advertising, Shipment
+                                    bin-packing and booking through 3rd party APIs, Stock alerts and Purchase Order
+                                    planning and more.
+                                    .<br><br>
+                                    • Project responsibilities include ETL pipelines, bin-packing generators, REST
+                                    APIs, Database models, CRON jobs, Unit Testing, Scalable refactors of old
+                                    features, thread pooling and more.
+                                    .<br><br>
+                                    • Tech stack: Python, SQL, Postgres, Django/DRF/ORM, AWS, Celery, Redis, Sentry,
+                                    Pandas, Linux, GitLab, Git, a little bit of HTML and more.
+                                    .<br><br>
+                                </p>
+                                <p><strong>----------------------------------------------------------------</strong></p>
+                                <p class="content">
+                                    • <strong>Razor Group Role:</strong>
+                                    • Re-implement Perch web application features into the Razor system. Provide
+                                    Razor engineers with explanation and overview of Perch tech.
+                                    • Lead engineer rebuilding Perch features into the Razor system.<br><br>
+                                    • Introduce and integrate Perch partners with the Razor team.<br><br>
+                                    • Tech stack: Python, SQL, DynamoDB, AWS Lambda/SQS/API Gateway, Netsuite,
+                                    Airflow, Redshift, Git, GitHub, CloudWatch.
+                                </p>
+								<ul class="statistics">
+									<li class="style5">
+										<span class="icon solid"><img src="https://img.icons8.com/dusk/64/000000/system-task.png"/></span>
+										<strong>Systems Analyst</strong> Spring Rebuilders INC.
+										<h5>2016 - Present</h5>
+									</li>
+								</ul>
+								<p class="content">
+                                    • Deliver in-depth data analysis on automotive sales using SQL, PostgreSQL, Python
+                                    & Pandas.<br><br>
+                                    • Organize 2500 inventory items within relational databases
+                                    used for comparison, calculations & market research.<br><br>
+                                    • Develop a more modern web presence for the company.<br><br><br>
+                                    • Generate reports to identify annual usages, OEM or
+                                    aftermarket costs & freight policy, allowing for better
+                                    allocation of resources to improve sales & profits.
+                                </p>
+                                <p class="content">
+                                    • Improve worker efficiency through the convenience of modern technology.<br><br>
+                                    • Maintain data integrity between two separate company branches.<br><br><br>
+                                    • Write scripts to improve workflow & automation of tedious tasks.<br><br>
+                                    • Install/Set up new applications & hardware.<br><br>
+                                    • Use data analysis to put forth competitive offers on silent bidding contracts.
+                                </p>
+								<ul class="statistics">
+									<li class="style1">
+										<span class="icon solid"><img src="https://img.icons8.com/nolan/64/database.png"/></span>
+										<strong>Database Manager</strong> Spring Rebuilders INC.
+										<h5>2012 - 2016</h5>
+									</li>
+								</ul>
+                                <p class="content">
+                                    • Maintained data integrity by keeping inventory counts up-to-date.<br><br>
+                                    • Organized products & tracked orders.<br>
+                                    • Made occasional deliveries across the East Coast.<br><br>
+                                    • Used my growing knowledge in Computer Science to get promoted to Systems Analyst.
+                                </p>
+								<ul class="statistics">
+									<li class="style12">
+										<span class="icon solid"><img src="https://img.icons8.com/nolan/64/exercise.png"/></span>
+										<strong>Sports Conditioning Trainer</strong> Independent/Self-Employed
+										<h5>2013 - Present</h5>
+									</li>
+								</ul>
+                                <p class="content">
+                                    • Create personalized workout routines for individuals.<br><br>
+                                    • Provide motivational support & confidence to clients.<br><br>
+                                    • Solve challenges to meet the unique goals of each client.<br><br>
+                                    • Use my knowledge to help those who wish to improve their overall health & fitness.
+                                </p>
+								<footer class="major">
+								</footer>
+							</section>
+
+						<!-- Third Section -->
+						<section id="third" class="main special">
+							<header class="major">
+								<h2>Skills</h2>
+							</header>
+							<header class="major">
+								<h3>Languages</h3>
+							</header>
+							<ul class="statistics">
+								<li class="style1">
+									<span class="icon solid"><img src="https://img.icons8.com/nolan/64/python.png"/></span>
+									<strong><span class="block-titles">Python</span></strong>
+                                        OOP<br>
+                                        API Development<br>
+                                        Data Modeling<br>
+                                        Data Analysis<br>
+                                        Unit Testing
+								</li>
+								<li class="style2">
+									<span class="icon"><img src="https://img.icons8.com/nolan/64/javascript.png"/></span>
+									<strong><span class="block-titles">JavaScript</span></strong>
+                                        ASYNC<br>
+                                        JSX<br>
+                                        jQuery<br>
+                                        Dom Manipulation<br>
+                                        API Requests
+								</li>
+								<li class="style3">
+									<span class="icon solid"><img src="https://img.icons8.com/nolan/64/sql.png"/></span>
+									<strong><span class="block-titles">SQL</span></strong>
+                                        PostgreSQL<br>
+                                        MySQL<br>
+                                        SQLite<br>
+                                        Window Functions
+								</li>
+								<li class="style4">
+									<span class="icon solid"><img src="https://img.icons8.com/nolan/64/html.png"/><img src="https://img.icons8.com/nolan/64/css-filetype.png"/></span>
+									<strong><span class="block-titles">HTML/CSS</span></strong>
+                                        BootStrap<br>
+                                        Chrome Dev Tools
+								</li>
+								<li class="style6">
+									<span class="icon"><img src="https://img.icons8
+									.com/?size=64&id=55251&format=png&color=000000"/></span>
+									<strong><span class="block-titles">C#</span></strong>
+                                        OOP<br>
+                                        Abstraction<br>
+                                        Inheritance<br>
+                                        Game Development<br>
+                                        Encapsulation
+								</li>
+							</ul>
+							<header class="major">
+								<h3>Tools & Frameworks</h3>
+							</header>
+							<ul class="statistics">
+								<li class="style7">
+									<span class="icon solid"><img src="https://img.icons8.com/windows/96/000000/django.png"/></span>
+									<strong><span class="block-titles">Django</span></strong>
+								</li>
+								<li class="style8">
+									<span class="icon"><img src="https://img.icons8
+									.com/?size=96&id=wU62u24brJ44&format=png&color=000000"/></span>
+									<strong><span class="block-titles">AWS</span></strong>
+								</li>
+								<li class="style9">
+									<span class="icon solid"><img src="https://img.icons8
+									.com/?size=96&id=39848&format=png&color=000000"/></span>
+									<strong><span class="block-titles">Unity</span></strong>
+								</li>
+								<li class="style10">
+									<span class="icon solid"><img src="https://img.icons8.com/color/96/000000/nodejs.png"/></span>
+									<strong><span class="block-titles">Node</span></strong>
+								</li>
+							</ul>
+							<header class="major">
+								<h3>Personal Project Stacks</h3>
+							</header>
+							<ul class="statistics">
+								<li class="style6">
+									<span class="icon solid"><img src="https://img.icons8.com/color/96/000000/mars-planet.png"/></span>
+									<strong><span class="block-titles">Mars Dashboard</span></strong>
+                                    Node/Express<br>
+                                    ImmutableJS<br>
+                                    HTML/CSS<br>
+                                    NASA API<br>
+                                    Yarn
+								</li>
+								<li class="style8">
+									<span class="icon"><img src="https://img.icons8.com/color/96/000000/car-racing.png"/></span>
+									<strong><span class="block-titles">Racing Simulator</span></strong>
+                                    JavaScript<br>
+                                    ASYNC<br>
+                                    HTML/CSS<br>
+                                    Binary API<br>
+                                    NPM
+								</li>
+								<li class="style9">
+									<span class="icon solid"><img src="https://img.icons8.com/emoji/96/000000/fire.png"/></span>
+									<strong><span class="block-titles">Fyyur Booking</span></strong>
+                                    Python<br>
+                                    Flask<br>
+                                    SQLAlchemy<br>
+                                    PostgreSQL<br>
+                                    Node.js<br>
+                                    HTML/CSS
+								</li>
+								<li class="style11">
+									<span class="icon solid"><img src="https://img.icons8.com/fluent/96/000000/graph.png"/></span>
+									<strong><span class="block-titles">Predictive Analysis</span></strong>
+                                    Python<br>
+                                    Pandas<br>
+                                    Matplotlib<br>
+                                    Scikit-Learn<br>
+                                    SQLite<br>
+                                    Lahman Database<br>
+                                    Chadwick Tools
+								</li>
+								<li class="style1">
+									<span class="icon solid"><img src="https://img.icons8.com/color/96/000000/multiple-choice.png"/></span>
+									<strong><span class="block-titles">Trivia API</span></strong>
+                                    React<br>
+                                    Python<br>
+                                    Flask<br>
+                                    SQLAlchemy<br>
+                                    HTML/CSS<br>
+                                    JavaScript
+								</li>
+							</ul>
+							<p class="content"></p>
+							<footer class="major">
+								<ul class="actions special">
+									<li><a href="{% url 'project_index' %}" class="button">View Projects</a></li>
+								</ul>
+							</footer>
+						</section>
+
+						<!-- Get Started -->
+							<section id="cta" class="main special">
+								<header class="major">
+									<h2>Directory</h2>
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="{% url 'homepage' %}" class="button">Home</a></li>
+										<li><a href="{% url 'project_index' %}" class="button">Projects</a></li>
+                                        <li><a href="https://github.com/Tom-OLeary" class="button" target="_blank" rel="noopener">GitHub</a></li>
+                                        <li><a href="https://www.linkedin.com/in/tom-oleary19/" class="button"
+                                               target="_blank" rel="noopener">LinkedIn</a></li>
+									</ul>
+								</footer>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Contact</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Norton, MA 02766 &bull; USA</dd>
+								<dt>Email</dt>
+								<dd><a href="mailto: tom_oleary19@outlook.com">tom_oleary19@outlook.com</a></dd>
+							</dl>
+						</section>
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.scrollex.min.js'%}"></script>
+			<script src="{% static 'js/jquery.scrolly.min.js'%}"></script>
+			<script src="{% static 'js/browser.min.js'%}"></script>
+			<script src="{% static 'js/breakpoints.min.js'%}"></script>
+			<script src="{% static 'js/util.js'%}"></script>
+			<script src="{% static 'js/main.js'%}"></script>
+	</body>
+</html>
+
+{% endblock %}

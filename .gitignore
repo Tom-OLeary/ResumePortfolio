@@ -1,0 +1,6 @@
+env
+.idea
+.DS_STORE
+portfolio/local.py
+db.sqlite3
+__pycache__/

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+{% load static %}
+{% block page_content %}
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tom's Portfolio</title>
+  <meta name="description" content="">
+
+  <style>
+    /* Preloader
+    https://ihatetomatoes.net/create-custom-preloading-screen/
+    */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+    #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #F62F2F;
+
+        -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+        animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+
+        z-index: 1001;
+    }
+        #loader:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #F45D22;
+
+            -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+            animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+        }
+        #loader:after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #fb0094;
+
+            -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+              animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+        }
+        @-webkit-keyframes spin {
+            0%   {
+                -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(0deg);  /* IE 9 */
+                transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+            100% {
+                -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(360deg);  /* IE 9 */
+                transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+        }
+        @keyframes spin {
+            0%   {
+                -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(0deg);  /* IE 9 */
+                transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+            100% {
+                -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(360deg);  /* IE 9 */
+                transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+        }
+        #loader-wrapper .loader-section {
+            position: fixed;
+            top: 0;
+            width: 51%;
+            height: 100%;
+            background: black;
+            z-index: 1000;
+            -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: translateX(0);  /* IE 9 */
+            transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */
+        }
+        #loader-wrapper .loader-section.section-left {
+            left: 0;
+        }
+        #loader-wrapper .loader-section.section-right {
+            right: 0;
+        }
+        /* Loaded */
+        .loaded #loader-wrapper .loader-section.section-left {
+            -webkit-transform: translateX(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateX(-100%);  /* IE 9 */
+                    transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
+
+            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+                    transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+        .loaded #loader-wrapper .loader-section.section-right {
+            -webkit-transform: translateX(100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateX(100%);  /* IE 9 */
+                    transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
+
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .loaded #loader {
+            opacity: 0;
+            -webkit-transition: all 0.3s ease-out;
+                    transition: all 0.3s ease-out;
+        }
+        .loaded #loader-wrapper {
+            visibility: hidden;
+
+            -webkit-transform: translateY(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateY(-100%);  /* IE 9 */
+                    transform: translateY(-100%);  /* Firefox 16+, IE 10+, Opera */
+
+            -webkit-transition: all 0.3s 1s ease-out;
+                    transition: all 0.3s 1s ease-out;
+        }
+        /* JavaScript Turned Off */
+        .no-js #loader-wrapper {
+            display: none;
+        }
+        .no-js h1 {
+            color: #222222;
+        }
+  </style>
+  <link rel="preload" href="{% static 'css/bootstrap.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"></noscript>
+  <link rel="preload" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></noscript>
+  <link rel="preload" href="{% static 'css/homepage.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{% static 'css/homepage.css' %}"></noscript>
+  <link rel="icon" href="https://img.icons8.com/color/48/000000/user-location.png" type="image/x-icon">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script defer src="{% static 'https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' %}"></script>
+        <script defer src="{% static 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script>
+        <![endif]-->
+
+      </head>
+      <body class="about-page mid-section">
+
+        <!-- Preloader -->
+        <div id="loader-wrapper">
+          <div id="loader"></div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
+        </div>
+        <!-- End Preloader -->
+
+        <section class="hp-top-section">
+
+          {# MENU BAR START #}
+        <div class="area"></div><nav class="main-menu">
+                    <ul>
+                        <li>
+                            <a href="{% url 'homepage' %}">
+                                <i class="fa fa-home fa-2x"></i>
+                                <span class="nav-text">
+                                    Home
+                                </span>
+                            </a>
+                        </li>
+                        <li class="has-subnav">
+                            <a href="{% url 'project_index' %}">
+                                <i class="fa fa-lightbulb-o fa-2x"></i>
+                                <span class="nav-text">
+                                    Projects
+                                </span>
+                            </a>
+                        </li>
+                        <li class="has-subnav">
+                        </li>
+                        <li class="has-subnav">
+                            <a href="https://github.com/tom-oleary" target="_blank" rel="noopener">
+                               <i class="fa fa-github fa-2x"></i>
+                                <span class="nav-text">
+                                    GitHub
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/tom-oleary19/" target="_blank" rel="noopener">
+                                <i class="fa fa-linkedin fa-2x"></i>
+                                <span class="nav-text">
+                                    LinkedIn
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'resume' %}" class="menu-separator">
+                                <i class="fa fa-file fa-2x"></i>
+                                <span class="nav-text">
+                                   Resume
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="logout">
+                        <li>
+                           <a href="{% static 'img/portfolioResources.pdf' %}" target="_blank">
+                                 <i class="fa fa-file-text-o fa-2x"></i>
+                                <span class="nav-text">
+                                    Resources
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+           {# MENU BAR END #}
+
+          <div class="hp-header">
+            <h1 class="hp-site-name neon neon-base" id="hp-name" data-text="[Web Portfolio]">Web Portfolio</h1>
+            <div class="mobile-menu-icon">
+              <i class="fa fa-bars"></i>
+          </div>
+         </div>
+         <div class="hp-welcome welcome-slider">
+          <div class="container">
+            <div class="row">
+              <div class="flexslider">
+                <ul class="slides">
+                  <li>
+                    <div class="about-slider">
+                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <img src="{% static 'img/about/abstract.jpeg' %}" class="img-responsive welcome-title-1"
+                             alt="Image" width="202.5" height="134.56">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
+                        <h2 class="text-uppercase welcome-title">
+                          	<span class="welcome-title-1 neon-base">Software Engineer</span>
+                        </h2>
+                        <p class="welcome-message">Welcome to my portfolio! As I continue to grow as an engineer, I will
+                            be updating this web application often, utilizing new tools and
+                            concepts I have learned. Check out the projects section for examples of finished work. I
+                            intend to begin updating this section with some more recent examples that may better
+                            reflect my knowledge to date.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="about-slider">
+                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <img src="{% static 'img/about/terminal.png' %}" class="img-responsive" alt="Image"
+                             width="202.5" height="202.5">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
+                        <h2 class="text-uppercase welcome-title">
+                          <span class="welcome-title-1 neon-base">Landing Page</span>
+                          <span class="welcome-title-2">Django | Bootstrap | JavaScript | Python | HTML | CSS</span>
+                        </h2>
+                        <p class="welcome-message">Here are the dependencies for this specific page of the project.
+{#                            Please refer to the <a href="{% url 'blog_index' %}">Blog</a> page for more#}
+                                info regarding each section of this application.</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!--Main content-->
+    <section class="container margin-bottom-50">
+      <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 2</div>
+        <div class="about-container shadow">
+            <div class="about-container-left">
+              <img src="{% static 'img/about-me.jpg' %}" alt="Image" class="img-responsive" width="340" height="212.5">
+              <p class="about-description">As technology continues to improve at a rapid pace, there will always be new
+                  knowledge to discover. This provides an exciting and rewarding career path in Computer Science. As
+                  someone who is deeply passionate about technology, I am always eager to learn something new. </p>
+              <h4 class="about-title" style="text-align:center;margin-top:10px;margin-bottom:5px;">Site Deployment</h4>
+              <li class="about-description"><span class="about-cat">Host: </span>PythonAnywhere</li>
+              <li class="about-description"><span class="about-cat">Database: </span>MySQL</li>
+              <li class="about-description"><span class="about-cat">Framework: </span>Django</li>
+              <h4 class="about-title" style="text-align:center;margin-top:10px;margin-bottom:5px;">Development</h4>
+              <li class="about-description"><span class="about-cat">OS: </span>Windows 10 PC (WSL2) & MacOS M1</li>
+              <li class="about-description"><span class="about-cat">Version Control: </span>Git</li>
+              <p class="welcome-message" style="color:whitesmoke;margin:10px;"><strong>**NOTE:</strong> I do not take
+                  credit for writing some of the JS used to drive effects on this site. I may have modified them
+                  slightly, but all credit to the original owners! (see resources tab or code repo).
+              </p>
+            </div>
+            <div class="about-container-right">
+              <h2 class="about-title">About Me</h2>
+                <p><span class="about-cat">Name: </span>Tom O'Leary</p>
+                <p><span class="about-cat">Main Proficiency: </span>Python/Backend</p>
+                <p><span class="about-cat">Location: </span>Norton, MA 02766</p>
+                <p><span class="about-cat">Education: </span>
+                  <ul>
+                      <li>B.S in Computer Science, Bridgewater State University - Bridgewater, MA</li>
+                      <li>Intermediate JavaScript, Udacity Nanodegree</li>
+                      <li>High School Diploma, Moses Brown School - Providence, RI</li>
+                      <li>Certified Personal Trainer & Sports Conditioning Specialist (<em>ACSM/ACE</em>)</li>
+                  </ul>
+                </p>
+              <ul class="about-ul details-top"><span class="about-cat">Hobbies:</span>
+                      <li>Programming</li>
+                      <li>Researching</li>
+                      <li>Reading</li>
+                      <li>Sports</li>
+                      <li>Documentaries</li>
+              </ul>
+              <ul class="about-ul details-top"><span class="about-cat">Career Interests:</span>
+                      <li>Full Stack Development</li>
+                      <li>Web Development</li>
+                      <li>Sports Analytics</li>
+                      <li>Game Development (Currently learning as a hobby)</li>
+                      <li>Machine Learning</li>
+                      <li>E-Commerce Tech</li>
+                      <li>Supply Chain Tech</li>
+                      <li>Data Analysis</li>
+
+              </ul>
+              <ul class="about-ul" id="about-concepts"><span class="about-cat">Project Experience:</span>
+                  <li>API Development</li>
+                  <li>ETL Pipelines</li>
+                  <li>Async/Functional JS</li>
+                  <li>Django/DRF</li>
+                  <li>Optimization</li>
+                  <li>AWS</li>
+                  <li>Legacy Refactors</li>
+              </ul>
+                <p id="and-more">...and more, which can be found in the <a href="{% url 'project_index' %}">Projects</a> section.</p id="and-more">
+            </div>
+          </div>
+      </div>
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 2</div>
+        <div class="about-container shadow">
+            <div class="about-container-left">
+              <img src="{% static 'img/about-project.png' %}" alt="Image" class="img-responsive" width="340"
+                   height="153.61">
+                <p class="about-description"><span style="color: #F45D22">Why Django?: </span>Although a back-end heavy framework may be considered
+                  overboard for a standard web portfolio, I intend for this to be much more than that. I will
+                    continue adding information to this portfolio, as each subsequent app will provide new languages
+                    and design concepts.
+                </p>
+                  <p class="about-description"><span style="color: #F45D22">The Goal: </span>
+                <ul>
+                <li style="color:whitesmoke">To become efficient at
+                learning & implementing new technologies on the fly.</li>
+                <li style="color:whitesmoke">Learn good & bad practices through exploring every angle of web
+                    development.</li>
+                </ul>
+                </p>
+                <p class="about-description"><span style="color: #F45D22">The Purpose: </span>To ensure I improve
+                    through real experience, and not just research. In order to have a strong understanding of the
+                    software development cycle, it is important I discover the trade-offs between each technology
+                    available today.</p>
+{#                <a href="https://github.com/Tom-OLeary/web_portfolio" class="about-link" target="_blank"#}
+{#                   rel="noopener">Source Code</a>#}
+            </div>
+            <div class="about-container-right">
+              <h2 class="about-title">About This Application</h2>
+              <p>For this project as a whole, I intend to implement multiple applications, utilizing new
+                  languages and technologies throughout. Here is what I have included so far, as well as my future
+                  plans:</p>
+              <ul class="about-ul-2 details-top"><span class="about-cat">Front-End:</span>
+                  <li>JavaScript</li>
+                  <li>React</li>
+                  <li>Bootstrap</li>
+                  <li>CSS</li>
+                  <li>HTML</li>
+                  <li>JSX</li>
+                  <li>jQuery</li>
+              </ul>
+              <ul class="about-ul-2 details-top"><span class="about-cat">Back-End:</span>
+                  <li>Python</li>
+                  <li>Django</li>
+                  <li>Node.js</li>
+              </ul>
+              <ul class="about-ul-2 details-top"><span class="about-cat">Database:</span>
+                  <li>MySQL</li>
+                  <li>Django ORM</li>
+              </ul>
+              <h2 class="about-title">Future Plans</h2>
+              <ul class="about-ul-2"><span class="about-cat">Languages:</span>
+                  <li>TypeScript</li>
+                  <li>SCSS</li>
+                  <li>PHP</li>
+              </ul>
+              <ul class="about-ul-2"><span class="about-cat">Databases:</span>
+                  <li>PostgreSQL</li>
+                  <li>MSSQL Server</li>
+              </ul>
+              <ul class="about-ul-2"><span class="about-cat">Frameworks:</span>
+                  <li>Angular</li>
+                  <li>Vue</li>
+                  <li>Rails</li>
+              </ul>
+              <p>
+                <ul><span class="about-cat">Performance:</span>
+                  <li>(JS/CSS) Bundling & Minification</li>
+                  <li>Run coverage & remove redundant CSS</li>
+                  <li>Browser Caching</li>
+                  <li>Lazy Loading Images</li>
+                </ul>
+              </p>
+              <p>This section will be updated frequently as new ideas arise.</p>
+            </div>
+          </div>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if(n > slides.length) {
+          slideIndex = 1
+        }
+        if(n < 1) {
+          slideIndex = slides.length
+        }
+        for(i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for(i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+    </script>
+
+    </section> <!-- Main content -->
+
+    <!--Footer content-->
+    <footer class="hp-footer">
+      <div class="container">
+        <div class="row margin-bottom-60">
+          <nav class="col-lg-3 col-md-3 hp-footer-nav hp-footer-div">
+            <h3 class="hp-footer-div-title">Main Menu</h3>
+            <ul>
+              <li><a href="{% url 'homepage' %}">Home</a></li>
+              <li><a href="{% url 'project_index' %}">Projects</a></li>
+              <li><a href="{% url 'resume' %}">Resume</a></li>
+              <li><a href="{% static 'img/portfolioResources.pdf' %}" target="_blank">Resources</a></li>
+            </ul>
+          </nav>
+          <div class="col-lg-5 col-md-5 hp-footer-div">
+            <h3 class="hp-footer-div-title">Contact</h3>
+            <ul class="margin-top-15">Email (Primary): tom_oleary19@outlook.com</ul>
+            <ul class="margin-top-15">Gmail (Secondary): troleary19@gmail.com</ul>
+            <ul class="margin-top-15">Address: Norton, MA</ul>
+            <ul class="margin-top-15">GitHub: github.com/Tom-OLeary</ul>
+            <ul class="margin-top-15">LinkedIn: linkedin.com/in/tom-oleary19/</ul>
+          </div>
+          <div class="col-lg-4 col-md-4 hp-footer-div">
+            <h3 class="hp-footer-div-title">Links</h3>
+            <div class="hp-social-icons-container">
+              <a href="https://github.com/Tom-OLeary" class="hp-social-icon" id="github" target="_blank" rel="noopener"></a>
+              <a href="https://www.linkedin.com/in/tom-oleary19/" class="hp-social-icon" id="linkedin"
+                 target="_blank" rel="noopener"></a>
+              <a href="mailto: tom_oleary19@outlook.com" class="hp-social-icon" id="outlook"></a>
+              <a href="mailto: troleary19@gmail.com" class="hp-social-icon" id="gmail"></a>
+            </div>
+          </div>
+        </div>
+        <div class="row hp-copyright">
+          <p class="col-lg-12 small copyright-text text-center">Currently Seeking Job Opportunities</p>
+        </div>
+      </div>
+    </footer> <!-- Footer content-->
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" defer src="{% static 'js/hp-script.js' %}"></script>
+    <script defer src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script>
+      $(window).load(function() {
+        $('.flexslider').flexslider({
+          animation: "slide",
+          slideshow: false,
+          prevText: "&#8701;",
+          nextText: "&#10154;"
+        });
+        // Remove preloader
+        $('body').addClass('loaded');
+      });
+    </script>
+  </body>
+  </html>
+{% endblock %}
