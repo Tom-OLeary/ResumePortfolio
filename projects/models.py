@@ -14,5 +14,3 @@ class Project(models.Model):
     demo = models.BooleanField(default=False)
     readme = models.URLField(max_length=200, default="")
     repo_only = models.BooleanField(default=False)
-
-

@@ -4,16 +4,18 @@ from projects.models import Project
 
 # Create your views here.
 def project_index(request):
-    # repo_only projects are most recent
-    # TODO add a date_created field for cleaner sorting
-    projects = Project.objects.all().order_by("-repo_only")
+    projects = Project.objects.all().order_by("-repo_only", "pk")
     for project in projects:
         if project.pk % 2 == 0:
             # hack to alternate parallax effect direction
             project.condition = None
 
-    context = {'projects': projects}
-    return render(request, 'project_index.html', context)
+    # context = {'projects': Project.objects.order_by("-date_created")}
+    return render(
+        request,
+        "project_index.html",
+        {"projects": projects},
+    )
 
 
 def project_detail(request, pk):
@@ -25,5 +27,5 @@ def project_detail(request, pk):
         # (only triggered via button on existing project record)
         return
 
-    context = {'project': project}
-    return render(request, 'project_detail.html', context)
+    # context = {"project": project}
+    return render(request, "project_detail.html", {"project": project})
