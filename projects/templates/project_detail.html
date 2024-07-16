@@ -40,7 +40,11 @@
                 <p>{{ project.description }}</p>
                 <br>
                 <a href="{{ project.github }}" target="_blank" class="btn btn-primary">Source Code</a>
+                {% if project.demo and not project.video %}
+                <a href="{{ project.readme }}" target="_blank" class="btn btn-primary">Live Demo</a>
+                {% else %}
                 <a href="{{ project.readme }}" target="_blank" class="btn btn-primary">README</a>
+                {% endif %}
                 <br><br>
             </div>
         </div>

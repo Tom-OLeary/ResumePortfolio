@@ -32,7 +32,11 @@
                     <div class="info-check">
                         <p>Source Code: ✅</p>
                         {% if project.demo %}
-                        <p>Video Demo: ✅️</p>
+                            {% if project.video %}
+                                <p>Video Demo: ✅️</p>
+                            {% else %}
+                                <p>Live Demo: ✅️</p>
+                            {% endif %}
                         {% elif project.repo_only %}
                             <p>Repo Only: ✅️</p>
                         {% else %}
