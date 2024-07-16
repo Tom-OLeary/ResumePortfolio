@@ -5,3 +5,4 @@ portfolio/local.py
 db.sqlite3
 __pycache__/
 env
+portfolio/db_commands.py
