@@ -96,13 +96,13 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #     }
 # }
 
-password = os.getenv("DB_PASSWORD")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'troleary$default',
         'USER': 'troleary',
-        'PASSWORD': password,
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'troleary.mysql.pythonanywhere-services.com',
     }
 }
