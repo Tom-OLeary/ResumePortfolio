@@ -7,4 +7,3 @@ __pycache__/
 env
 portfolio/db_commands.py
 .env
-static/
