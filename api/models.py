@@ -176,14 +176,14 @@ class Player(models.Model):
     class Meta:
         db_table = "players"
 
-    latest_team = models.ForeignKey(Team, related_name='players', on_delete=models.SET_NULL)
+    latest_team = models.ForeignKey(Team, related_name='players', null=True, blank=True, on_delete=models.SET_NULL)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    player_id = models.CharField(unique=True)
+    player_id = models.CharField(max_length=64, unique=True)
     height = models.CharField(max_length=4)
     weight = models.FloatField(default=0.0)
     position = models.CharField(max_length=4)
-    jersey_number = models.IntegerField(max_length=2, default=None)
+    jersey_number = models.IntegerField(default=None)
     draft_pick = models.CharField(max_length=2, default=None)
     draft_year = models.CharField(max_length=4, default=None)
     draft_round = models.CharField(max_length=2, default=None)
