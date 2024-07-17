@@ -1,3 +1,4 @@
+import json
 import os
 import time
 import pandas as pd
@@ -83,9 +84,92 @@ class Team(models.Model):
     def active_players(self):
         return self.players.filter(is_active=True)
 
+    @property
+    def inactive_players(self):
+        return self.players.filter(is_active=False)
+
+    @property
+    def all_players(self):
+        return self.players.all()
+
+
+@dataclass
+class PlayerRecord:
+    PERSON_ID: str
+    PLAYER_LAST_NAME: str
+    PLAYER_FIRST_NAME: str
+    TEAM_CITY: str
+    TEAM_NAME: str
+    TEAM_ABBREVIATION: str
+    JERSEY_NUMBER: int
+    POSITION: str
+    HEIGHT: str
+    WEIGHT: float
+    COLLEGE: str
+    COUNTRY: str
+    DRAFT_YEAR: str
+    DRAFT_ROUND: str
+    DRAFT_NUMBER: str
+    ROSTER_STATUS: str
+    PTS: float
+    REB: float
+    AST: float
+    TO_YEAR: str
+
+    def __post_init__(self):
+        self.latest_team = Team.objects.filter(abbreviation=self.TEAM_ABBREVIATION).first()
+
+    @property
+    def data(self):
+        return {
+            "latest_team": self.latest_team,
+            "first_name": self.PLAYER_FIRST_NAME,
+            "last_name": self.PLAYER_LAST_NAME,
+            "player_id": self.PERSON_ID,
+            "height": self.HEIGHT,
+            "weight": self.WEIGHT,
+            "position": self.POSITION,
+            "jersey_number": self.JERSEY_NUMBER,
+            "draft_pick": self.DRAFT_NUMBER,
+            "draft_year": self.DRAFT_YEAR,
+            "draft_round": self.DRAFT_ROUND,
+            "final_year": self.TO_YEAR,
+            "college": self.COLLEGE,
+            "country": self.COUNTRY,
+            "is_active": self.ROSTER_STATUS,
+            "career_pts_avg": self.PTS,
+            "career_reb_avg": self.REB,
+            "career_ast_avg": self.AST,
+        }
+
 
 class PlayerModelManager(models.Manager):
-    pass
+    IGNORE_FIELDS = [
+        "Unnamed: 0",
+        "PLAYER_SLUG",
+        "TEAM_ID",
+        "TEAM_SLUG",
+        "IS_DEFUNCT",
+        "STATS_TIMEFRAME",
+        "FROM_YEAR",
+    ]
+
+    def load_players_csv(self, path: str = None):
+        path = path or "api/nba/csv_data/player_index.csv"
+        player_data = pd.read_csv(os.path.join(settings.BASE_DIR, path)).to_dict("records")
+
+        players = []
+        for row in player_data:
+            try:
+                player = PlayerRecord(**{k: v for k, v in row.items() if k not in self.IGNORE_FIELDS})
+            except TypeError as e:
+                print(f"Data Error for player data {row}", e)
+                continue
+
+            players.append(self.model(**player.data))
+
+        print(f"{len(players)} players loaded")
+        self.bulk_create(players, ignore_conflicts=True)
 
 
 class Player(models.Model):
@@ -96,10 +180,23 @@ class Player(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     player_id = models.CharField(unique=True)
+    height = models.CharField(max_length=4)
+    weight = models.FloatField(default=0.0)
+    position = models.CharField(max_length=4)
+    jersey_number = models.IntegerField(max_length=2, default=None)
+    draft_pick = models.CharField(max_length=2, default=None)
+    draft_year = models.CharField(max_length=4, default=None)
+    draft_round = models.CharField(max_length=2, default=None)
+    final_year = models.CharField(null=True, blank=True, max_length=4)
+    college = models.CharField(max_length=50, null=True, blank=True)
+    country = models.CharField(max_length=50, null=True, blank=True)
     is_active = models.BooleanField(default=False)
 
-    objects = PlayerModelManager()
+    career_pts_avg = models.FloatField(default=0.0)
+    career_reb_avg = models.FloatField(default=0.0)
+    career_ast_avg = models.FloatField(default=0.0)
 
+    objects = PlayerModelManager()
 
 
 
